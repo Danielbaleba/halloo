@@ -9,7 +9,7 @@ wss.on("connection", (ws) => {
   console.log("Nouveau client connecté");
 
   ws.on("message", (message) => {
-    //console.log("Reçu :", message.toString());
+    console.log("Reçu :", message.toString());
 
     // Réponse directe
    // ws.send(message);
