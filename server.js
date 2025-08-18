@@ -9,15 +9,15 @@ wss.on("connection", (ws) => {
   console.log("Nouveau client connecté");
 
   ws.on("message", (message) => {
-    console.log("Reçu :", message.toString());
+    //console.log("Reçu :", message.toString());
 
     // Réponse directe
-    ws.send(`Echo: ${message}`);
+    ws.send(message);
 
     // Broadcast à tous les clients
     wss.clients.forEach((client) => {
       if (client.readyState === ws.OPEN) {
-        client.send(`Broadcast: ${message}`);
+        client.send(message);
       }
     });
   });
