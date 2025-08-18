@@ -12,7 +12,7 @@ wss.on("connection", (ws) => {
     //console.log("Reçu :", message.toString());
 
     // Réponse directe
-    ws.send(message);
+   // ws.send(message);
 
     // Broadcast à tous les clients
     wss.clients.forEach((client) => {
