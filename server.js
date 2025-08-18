@@ -17,7 +17,7 @@ wss.on("connection", (ws) => {
     // Broadcast à tous les clients
     wss.clients.forEach((client) => {
       if (client.readyState === ws.OPEN) {
-        client.send(message);
+        client.send(message.toString());
       }
     });
   });
