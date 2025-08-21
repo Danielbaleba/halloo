@@ -13,7 +13,7 @@ wss.on("connection", (ws) => {
 
     // Réémettre à tous les clients SAUF l'expéditeur
     wss.clients.forEach((client) => {
-      console.log(cleient);
+      console.log(client);
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         client.send(message.toString());
       }
