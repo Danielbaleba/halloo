@@ -9,6 +9,17 @@ wss.on("connection", (ws) => {
   console.log("Nouveau client connecté");
 
   ws.on("message", (message) => {
+    console.log("📩 Message reçu:", message.toString());
+
+    // Réémettre à tous les clients SAUF l'expéditeur
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message.toString());
+      }
+    });
+  });
+  
+ /* ws.on("message", (message) => {
     console.log("Reçu :", message.toString());
 
     // Réponse directe
@@ -20,7 +31,7 @@ wss.on("connection", (ws) => {
         client.send(message.toString());
       }
     });
-  });
+  });*/
 
   ws.on("close", () => console.log("Client déconnecté"));
 });
